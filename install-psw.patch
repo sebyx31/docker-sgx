@@ -1,5 +1,5 @@
 diff --git a/linux/installer/bin/install-sgx-psw.bin.tmpl b/linux/installer/bin/install-sgx-psw.bin.tmpl
-index 3510e97c..751831ab 100755
+index 3510e97..751831a 100755
 --- a/linux/installer/bin/install-sgx-psw.bin.tmpl
 +++ b/linux/installer/bin/install-sgx-psw.bin.tmpl
 @@ -30,34 +30,10 @@
@@ -38,7 +38,7 @@ index 3510e97c..751831ab 100755
  ARCH=$(uname -m)
  
 diff --git a/linux/installer/common/libsgx-enclave-common/install.sh b/linux/installer/common/libsgx-enclave-common/install.sh
-index 296879af..851d520b 100755
+index 20d8b17..23fe7b8 100755
 --- a/linux/installer/common/libsgx-enclave-common/install.sh
 +++ b/linux/installer/common/libsgx-enclave-common/install.sh
 @@ -33,11 +33,6 @@
@@ -53,23 +53,27 @@ index 296879af..851d520b 100755
  SCRIPT_DIR=$(dirname "$0")
  source ${SCRIPT_DIR}/installConfig
  
-@@ -95,7 +90,7 @@ elif [ -d /etc/init/ ]; then
+@@ -93,9 +88,7 @@ elif [ -d /etc/init/ ]; then
+     /sbin/initctl reload-configuration
+     retval=$?
  else
-     echo " failed."
-     echo "Unsupported platform - neither systemctl nor initctl is found."
+-    echo " failed."
+-    echo "Unsupported platform - neither systemctl nor initctl is found."
 -    exit 5
 +    retval=0
  fi
  
  if test $retval -ne 0; then
 diff --git a/linux/installer/common/psw/install.sh b/linux/installer/common/psw/install.sh
-index 59f3ed61..8ba940a3 100755
+index 49fd2f7..637a5fe 100755
 --- a/linux/installer/common/psw/install.sh
 +++ b/linux/installer/common/psw/install.sh
-@@ -96,7 +96,7 @@ elif [ -d /etc/init/ ]; then
+@@ -94,9 +94,7 @@ elif [ -d /etc/init/ ]; then
+     /sbin/initctl reload-configuration
+     retval=$?
  else
-     echo " failed."
-     echo "Unsupported platform - neither systemctl nor initctl is found."
+-    echo " failed."
+-    echo "Unsupported platform - neither systemctl nor initctl is found."
 -    exit 5
 +    retval=0
  fi
