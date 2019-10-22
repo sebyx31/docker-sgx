@@ -1,10 +1,9 @@
 #!/bin/bash
 
 source /opt/intel/sgxsdk/environment
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/intel/sgxpsw/aesm/
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/intel/libsgx-enclave-common/aesm/
 
-jhid -d
-/opt/intel/sgxpsw/aesm/aesm_service &
+/opt/intel/libsgx-enclave-common/aesm/aesm_service &
 pid=$!
 
 trap "kill ${pid}" TERM INT
